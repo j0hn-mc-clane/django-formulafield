@@ -3,6 +3,9 @@
 from django.db import models
 from django_formulafield.fields import EvaluatedFormulaField
 
+class ProductCategoryChoices(models.TextChoices):
+    SHOES = "shoes"
+    ELECTRONICS = "electronics"
 
 class SalesPerformance(models.Model):
     """Tracks sales performance with formula-evaluated totals."""
@@ -10,8 +13,8 @@ class SalesPerformance(models.Model):
     sold = models.IntegerField()
     cost_per_sale = models.FloatField()
     total_per_sale = models.FloatField()
-    
-
+    product = models.CharField(max_length=255, null=True)
+    product_category = models.CharField(max_length=255, null=True, choices=ProductCategoryChoices)
     placeholder_1_formula = models.CharField(
         max_length=500,
         help_text="e.g. (sold * total_per_sale) - (sold * cost_per_sale)",

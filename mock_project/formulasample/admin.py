@@ -12,7 +12,7 @@ class SalesPerformanceAdmin(admin.ModelAdmin):
     readonly_fields = ("placeholder_1","placeholder_2",)
     fieldsets = (
         ("Details", {
-            "fields": ("sold", "cost_per_sale", "total_per_sale"),
+            "fields": ("sold", "cost_per_sale", "total_per_sale", "product", "product_category"),
         }),
         ("Placeholder Formulas", {
             "fields": ("placeholder_1_formula", "placeholder_1", "placeholder_2_formula", "placeholder_2"),
