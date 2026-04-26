@@ -7,7 +7,7 @@ name = "django-formula-field"
 version = "0.1.0"
 description = "Django field for storing and evaluating formula expressions"
 authors = [
-    { name = "Your Name", email = "you@example.com" }
+    { name = "j0hn-mc-clane", email = "you@example.com" }
 ]
 readme = "README.md"
 license = { text = "MIT" }
@@ -40,9 +40,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourname/django-formula-field"
-Repository = "https://github.com/yourname/django-formula-field"
-Issues = "https://github.com/yourname/django-formula-field/issues"
+Homepage = "https://github.com/j0hn-mc-clane/django-formulafield"
+Repository = "https://github.com/j0hn-mc-clane/django-formulafield"
+Issues = "https://github.com/j0hn-mc-clane/django-formulafield/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
