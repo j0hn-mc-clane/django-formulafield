@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-formula-field"
-version = "0.1.0"
+version = "0.1.1"
 description = "Django field for storing and evaluating formula expressions"
 authors = [
     { name = "j0hn-mc-clane", email = "you@example.com" }
