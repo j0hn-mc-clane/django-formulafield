@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-formula-field"
+version = "0.1.0"
+description = "Django field for storing and evaluating formula expressions"
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["django", "field", "formula", "evaluation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "Django>=4.2",
+    "formulas>=1.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-django",
+    "pylint",
+    "pyright",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourname/django-formula-field"
+Repository = "https://github.com/yourname/django-formula-field"
+Issues = "https://github.com/yourname/django-formula-field/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["*.tests*", "sample_project*", "venv*"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "django_formulafield.tests.settings"
+django_find_project = false
+addopts = "--tb=short"

@@ -1,0 +1,14 @@
+[MASTER]
+ignore=venv,migrations
+
+[MESSAGES CONTROL]
+disable=
+    C0103,  # invalid-name — module name is django-formulafield, can't change it
+    C0114,  # missing-module-docstring
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+    W0611,  # unused-import — admin.py and views.py are Django boilerplate
+    W1113,  # keyword-arg-before-vararg — Django field __init__ convention
+    W0212,  # protected-access — _meta is the standard Django introspection API
+    E1101,  # no-member — pylint doesn't understand Django's ORM descriptors
+    R0903,  # too-few-public-methods — Django Meta class is always flagged
