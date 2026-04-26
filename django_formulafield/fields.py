@@ -6,12 +6,16 @@ class EvaluatedFormulaField(models.CharField):
     description = "Stores the evaluated result of a formula stored in another field."
 
     def __init__(self, formula_field=None, max_length=255, reevaluate_on_update=False, *args, **kwargs):
+        if not formula_field:
+            raise ValueError(f"Expected a formula_field parameter in the definition")
+        
         self.formula_field = formula_field
         self.reevaluate_on_update = reevaluate_on_update
         kwargs.setdefault("null", True)
         kwargs.setdefault("blank", True)
+        kwargs.setdefault("max_length", max_length)
         super().__init__(*args, **kwargs)
-        
+
     def deconstruct(self):
         name, path, args, kwargs = super().deconstruct()
         kwargs["formula_field"] = self.formula_field
