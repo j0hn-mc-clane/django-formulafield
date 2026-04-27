@@ -6,16 +6,44 @@ from .models import SalesPerformance
 
 @admin.register(SalesPerformance)
 class SalesPerformanceAdmin(admin.ModelAdmin):
-    """Admin view for SalesPerformance with formula result displayed."""
+    """Admin view for SalesPerformance."""
 
-    list_display = ("sold", "cost_per_sale", "total_per_sale")
-    readonly_fields = ("placeholder_1","placeholder_2",)
+    list_display = (
+        "product",
+        "product_category",
+        "sold",
+        "cost_per_sale",
+        "total_per_sale",
+        "placeholder_1",
+        "placeholder_2",
+        "registry_kpi_1",
+        "registry_kpi_2",
+    )
+    readonly_fields = (
+        "placeholder_1",
+        "placeholder_2",
+        "registry_kpi_1",
+        "registry_kpi_2",
+    )
     fieldsets = (
-        ("Details", {
-            "fields": ("sold", "cost_per_sale", "total_per_sale", "product", "product_category"),
+        ("Product", {
+            "fields": ("product", "product_category"),
         }),
-        ("Placeholder Formulas", {
-            "fields": ("placeholder_1_formula", "placeholder_1", "placeholder_2_formula", "placeholder_2"),
-            "description": "Enter a formula using field names as variables.",
+        ("Sales Data", {
+            "fields": ("sold", "cost_per_sale", "total_per_sale"),
+        }),
+        ("Per-instance Formulas", {
+            "fields": (
+                "placeholder_1_formula", "placeholder_1",
+                "placeholder_2_formula", "placeholder_2",
+            ),
+            "description": "Evaluated per instance — use field names as variables.",
+        }),
+        ("Registry KPIs", {
+            "fields": ("registry_kpi_1", "registry_kpi_2"),
+            "description": (
+                "Read-only. Values are computed and written by FormulaRegistry entries. "
+                "To change the formula, update the corresponding entry in the Formula Registry admin."
+            ),
         }),
     )

@@ -1,5 +1,8 @@
 from django.db import models
-import formulas
+
+from django_formulafield.models import build_context
+
+from .formulas import evaluate_formula_with_context
 
 
 class EvaluatedFormulaField(models.CharField):
@@ -34,24 +37,7 @@ class EvaluatedFormulaField(models.CharField):
             formula = formula_source()
         else:
             formula = formula_source
-
-        print(formula)
-
-        context = {
-            field.name.upper(): getattr(model_instance, field.name)
-            for field in model_instance._meta.get_fields()
-            if hasattr(field, "column")
-            and not field.is_relation
-            and field.name is not None
-        }
-
-        if not formula.strip().startswith("="):
-            formula = "=" + formula
-
-        _, ast = formulas.Parser().ast(formula)
-        compiled = ast.compile()
-        needed = set(compiled.inputs.keys())
-        result = str(compiled(**{k: v for k, v in context.items() if k in needed}))
-
+            
+        result = evaluate_formula_with_context(formula, build_context(model_instance))
         setattr(model_instance, self.attname, result)
         return result
