@@ -28,9 +28,14 @@ class EvaluatedFormulaField(models.CharField):
         return getattr(model_instance, self.attname)
 
     def evaluate_and_store(self, model_instance):
-        formula = getattr(model_instance, self.formula_field)
-        if not formula:
-            return None
+        formula_source = getattr(model_instance, self.formula_field)
+        
+        if callable(formula_source):
+            formula = formula_source()
+        else:
+            formula = formula_source
+
+        print(formula)
 
         context = {
             field.name.upper(): getattr(model_instance, field.name)
