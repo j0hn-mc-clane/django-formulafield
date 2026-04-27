@@ -9,8 +9,6 @@ click==8.3.3
 cryptography==47.0.0
 dill==0.4.1
 Django==6.0.4
-# Editable install with no version control (django-formula-field==0.1.0)
--e /home/j0hn_mc_clane/development/django-formulafield
 docutils==0.22.4
 formulas==1.3.4
 id==1.6.1
